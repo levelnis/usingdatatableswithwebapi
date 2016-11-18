@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace UsingDataTablesWithWebApi
+﻿namespace Levelnis.Learning.UsingDataTablesWithWebApi
 {
+    using System.Web.Mvc;
+
     public class FilterConfig
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)

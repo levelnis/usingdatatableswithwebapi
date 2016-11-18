@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace UsingDataTablesWithWebApi.Controllers
+﻿namespace Levelnis.Learning.UsingDataTablesWithWebApi.Controllers
 {
+    using System.Web.Mvc;
+
     public class HomeController : Controller
     {
         public ActionResult Index()
