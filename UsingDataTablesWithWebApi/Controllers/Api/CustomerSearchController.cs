@@ -5,9 +5,9 @@
     using Requests;
     using Responses;
 
-public class CustomerSearchController : ApiController
-{
-    private const string CustomerData = @"
+    public class CustomerSearchController : ApiController
+    {
+        private const string CustomerData = @"
 {
   ""Data"": [
     {
@@ -43,17 +43,17 @@ public class CustomerSearchController : ApiController
   ] 
 }";
 
-    public IHttpActionResult Get([FromUri]SearchRequest request)
-    {
-        var allCustomers = JsonConvert.DeserializeObject<CustomerData>(CustomerData);
-        var response = new CustomerSearchResponse
+        public IHttpActionResult Post(SearchRequest request)
         {
-            Data = allCustomers.Data,
-            Draw = request.Draw,
-            RecordsFiltered = allCustomers.Data.Count,
-            RecordsTotal = allCustomers.Data.Count
-        };
-        return Ok(response);
+            var allCustomers = JsonConvert.DeserializeObject<CustomerData>(CustomerData);
+            var response = new CustomerSearchResponse
+            {
+                Data = allCustomers.Data,
+                Draw = request.Draw,
+                RecordsFiltered = allCustomers.Data.Count,
+                RecordsTotal = allCustomers.Data.Count
+            };
+            return Ok(response);
+        }
     }
-}
 }
