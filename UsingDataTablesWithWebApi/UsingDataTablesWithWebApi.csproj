@@ -135,6 +135,7 @@
     <Compile Include="Controllers\Api\Requests\SearchRequest.cs" />
     <Compile Include="Controllers\Api\Responses\CustomerSearchResponse.cs" />
     <Compile Include="Controllers\Api\Responses\SearchResponse.cs" />
+    <Compile Include="Controllers\Api\SearchController .cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
