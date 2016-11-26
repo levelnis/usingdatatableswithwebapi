@@ -1,59 +1,34 @@
 ﻿namespace Levelnis.Learning.UsingDataTablesWithWebApi.Controllers.Api
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using System.Web.Http;
+    using Details;
+    using Infrastructure;
     using Newtonsoft.Json;
     using Requests;
     using Responses;
 
-    public class CustomerSearchController : ApiController
+    public class CustomerSearchController : SearchController
     {
-        private const string CustomerData = @"
-{
-  ""Data"": [
-    {
-      ""CompanyName"": ""Microsoft"",
-      ""Address"": ""1 Microsoft Way, London"",
-      ""Postcode"": ""N1 1NN"",
-      ""Telephone"": ""020 7100 1000""  
-    },
-    {
-      ""CompanyName"": ""Nokia"",
-      ""Address"": ""2 Nokia Way, London"",
-      ""Postcode"": ""N2 2NN"",
-      ""Telephone"": ""020 7200 2000""
-    },
-    {
-      ""CompanyName"": ""Apple"",
-      ""Address"": ""3 Apple Way, London"",
-      ""Postcode"": ""N3 3NN"",
-      ""Telephone"": ""020 7300 3000""
-    },
-    {
-      ""CompanyName"": ""Google"",
-      ""Address"": ""4 Google Way, London"",
-      ""Postcode"": ""N4 4NN"",
-      ""Telephone"": ""020 7400 4000""
-    },
-    {
-      ""CompanyName"": ""Samsung"",
-      ""Address"": ""5 Samsung Way, London"",
-      ""Postcode"": ""N5 5NN"",
-      ""Telephone"": ""020 7500 5000""
-    }
-  ] 
-}";
-
         public IHttpActionResult Post(SearchRequest request)
         {
-            var allCustomers = JsonConvert.DeserializeObject<CustomerData>(CustomerData);
+            var allCustomers = JsonConvert.DeserializeObject<CustomerData>(CustomerData.DataSource);
+            var response = WrapSearch(allCustomers.Data, request);
+            return Ok(response);
+        }
+
+        private static CustomerSearchResponse WrapSearch(ICollection<CustomerSearchDetail> details, SearchRequest request)
+        {
+            var results = ApiHelper.FilterCustomers(details, request.Search.Value).ToList();
             var response = new CustomerSearchResponse
             {
-                Data = allCustomers.Data,
+                Data = PageResults(results, request),
                 Draw = request.Draw,
-                RecordsFiltered = allCustomers.Data.Count,
-                RecordsTotal = allCustomers.Data.Count
+                RecordsFiltered = results.Count,
+                RecordsTotal = details.Count
             };
-            return Ok(response);
+            return response;
         }
     }
 }

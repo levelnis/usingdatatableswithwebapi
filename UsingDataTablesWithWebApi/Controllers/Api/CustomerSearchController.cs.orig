@@ -1,11 +1,18 @@
 ﻿namespace Levelnis.Learning.UsingDataTablesWithWebApi.Controllers.Api
 {
-    using System.Collections.Generic;
-    using Details;
+    using System.Web.Http;
+    using Newtonsoft.Json;
+    using Requests;
+    using Responses;
 
-    public class CustomerData
+    public class CustomerSearchController : ApiController
     {
-        public const string DataSource = @"
+<<<<<<< HEAD
+        public IHttpActionResult Get([FromUri] SearchRequest request)
+        {
+            var allCustomers = JsonConvert.DeserializeObject<CustomerData>(CustomerData.DataSource);
+=======
+        private const string CustomerData = @"
 {
   ""Data"": [
     {
@@ -41,6 +48,22 @@
   ] 
 }";
 
-        public IList<CustomerSearchDetail> Data { get; set; }
+        public IHttpActionResult Post(SearchRequest request)
+        {
+            var allCustomers = JsonConvert.DeserializeObject<CustomerData>(CustomerData);
+>>>>>>> master
+            var response = new CustomerSearchResponse
+            {
+                Data = allCustomers.Data,
+                Draw = request.Draw,
+                RecordsFiltered = allCustomers.Data.Count,
+                RecordsTotal = allCustomers.Data.Count
+            };
+            return Ok(response);
+        }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master
