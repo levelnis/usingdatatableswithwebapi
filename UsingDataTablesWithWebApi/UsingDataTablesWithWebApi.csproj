@@ -132,7 +132,10 @@
     <Compile Include="Controllers\Api\CustomerSearchController.cs" />
     <Compile Include="Controllers\Api\Details\CustomerSearchDetail.cs" />
     <Compile Include="Controllers\Api\Details\SearchDetail.cs" />
+    <Compile Include="Controllers\Api\Requests\ColumnRequestItem.cs" />
+    <Compile Include="Controllers\Api\Requests\OrderRequestItem.cs" />
     <Compile Include="Controllers\Api\Requests\SearchRequest.cs" />
+    <Compile Include="Controllers\Api\Requests\SearchRequestItem.cs" />
     <Compile Include="Controllers\Api\Responses\CustomerSearchResponse.cs" />
     <Compile Include="Controllers\Api\Responses\SearchResponse.cs" />
     <Compile Include="Controllers\Api\SearchController .cs" />
@@ -141,6 +144,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\BrowserJsonFormatter.cs" />
+    <Compile Include="Infrastructure\Extensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

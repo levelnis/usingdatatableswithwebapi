@@ -7,7 +7,7 @@
 
     public class CustomerSearchController : ApiController
     {
-        public IHttpActionResult Get([FromUri] SearchRequest request)
+        public IHttpActionResult Post(SearchRequest request)
         {
             var allCustomers = JsonConvert.DeserializeObject<CustomerData>(CustomerData.DataSource);
             var response = new CustomerSearchResponse

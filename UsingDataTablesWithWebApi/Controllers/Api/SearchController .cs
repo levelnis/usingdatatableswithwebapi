@@ -4,6 +4,7 @@
     using System.Linq;
     using System.Web.Http;
     using Details;
+    using Infrastructure;
     using Requests;
 
     public abstract class SearchController : ApiController
