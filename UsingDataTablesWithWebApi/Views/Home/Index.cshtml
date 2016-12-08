@@ -1,46 +1,21 @@
-﻿<div class="panel panel-primary">
-    <div class="panel-heading">
-        <h3 class="panel-title">Customers</h3>
+﻿@model Levelnis.Learning.UsingDataTablesWithWebApi.Models.HomeViewModel
+<div class="row">
+    <div class="col-xs-12">
+        @Html.DisplayFor(m => m.CustomerWidget)
     </div>
-    <div class="panel-body">
-        <table id="CustomerTable" class="table table-striped table-bordered table-hover responsive" width="100%">
-            <thead class="thin-border-bottom">
-            <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Postcode</th>
-                <th>Tel</th>
-            </tr>
-            </thead>
-        </table>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        @Html.DisplayFor(m => m.UserWidget)
     </div>
 </div>
 
 @section scripts {
     <script>
         (function($) {
-            $("#CustomerTable")
-                .dataTable({
-                    "processing": true,
-                    "serverSide": true,
-                    "ajax": {
-                        "url": "/api/customerSearch",
-                        "method": "POST"
-                    },
-                    "columns": [
-                        { "data": "companyName" },
-                        { "data": "address" },
-                        { "data": "postcode" },
-                        { "data": "telephone" }
-                    ],
-                    "language": {
-                        "emptyTable": "There are no customers at present.",
-                        "zeroRecords": "There were no matching customers found."
-                    },
-                    "searching": true,
-                    "ordering": true,
-                    "paging": true
-                });
+        @Helpers.CreateTableScript("CustomerTable", "/api/customerSearch", Model.CustomerWidget.RenderClientColumnScript(), "There are no customers at present.", "There were no matching customers found.")
+        @Helpers.CreateTableScript("UserTable", "/api/userSearch", Model.UserWidget.RenderClientColumnScript(), "There are no users at present.", "There were no matching users found.")
         })(jQuery);
     </script>
 }

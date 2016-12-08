@@ -1,0 +1,33 @@
+﻿@using System.Text
+@using System.Web.Mvc
+@using Levelnis.Learning.UsingDataTablesWithWebApi.Infrastructure
+@helper CreateTableScript(string id, string apiUrl, MvcHtmlString clientColumnScript, string emptyTableText, string zeroRecordsText, string isEnhanced = "true")
+{
+    var tableVar = "generate" + id;
+    var scriptBuilder = new StringBuilder();
+    scriptBuilder.AppendLine();
+    scriptBuilder.AppendFormat("var {0} = $(\"#{1}\")", tableVar, id);
+    scriptBuilder.AppendLine(".DataTable({");
+    scriptBuilder.AppendLine("  \"processing\": true,");
+    scriptBuilder.AppendLine("  \"serverSide\": true,");
+    scriptBuilder.AppendLine("  \"ajax\": {");
+    scriptBuilder.AppendFormat("    \"url\": \"{0}\",", apiUrl);
+    scriptBuilder.AppendLine();
+    scriptBuilder.AppendLine("    \"type\": \"POST\"");
+    scriptBuilder.AppendLine("  },");
+    scriptBuilder.Append(clientColumnScript);
+    scriptBuilder.AppendLine("  \"language\": {");
+    scriptBuilder.AppendFormat("    \"emptyTable\": \"{0}\",", emptyTableText);
+    scriptBuilder.AppendLine();
+    scriptBuilder.AppendFormat("    \"zeroRecords\": \"{0}\"", zeroRecordsText);
+    scriptBuilder.AppendLine();
+    scriptBuilder.AppendLine("  },");
+    scriptBuilder.AppendFormat("  \"searching\": {0},", isEnhanced);
+    scriptBuilder.AppendLine();
+    scriptBuilder.AppendFormat("  \"ordering\": {0},", isEnhanced);
+    scriptBuilder.AppendLine();
+    scriptBuilder.AppendFormat("  \"paging\": {0}", isEnhanced);
+    scriptBuilder.AppendLine();
+    scriptBuilder.AppendLine("});");
+    @scriptBuilder.ToHtmlString()
+}

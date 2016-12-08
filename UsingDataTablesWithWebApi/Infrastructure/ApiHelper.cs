@@ -22,5 +22,22 @@
 
             return results;
         }
+
+        public static IEnumerable<UserSearchDetail> FilterUsers(IEnumerable<UserSearchDetail> details, string searchText)
+        {
+            if (searchText.IsEmpty())
+            {
+                return details;
+            }
+
+            var results = details.Where(x => x.CompanyName.ContainsIgnoringCase(searchText)
+                || x.FirstName.ContainsIgnoringCase(searchText)
+                || x.LastName.ContainsIgnoringCase(searchText)
+                || x.Email.ContainsIgnoringCase(searchText)
+                || x.JobTitle.ContainsIgnoringCase(searchText)
+                );
+
+            return results;
+        }
     }
 }

@@ -132,13 +132,17 @@
     <Compile Include="Controllers\Api\CustomerSearchController.cs" />
     <Compile Include="Controllers\Api\Details\CustomerSearchDetail.cs" />
     <Compile Include="Controllers\Api\Details\SearchDetail.cs" />
+    <Compile Include="Controllers\Api\Details\UserSearchDetail.cs" />
     <Compile Include="Controllers\Api\Requests\ColumnRequestItem.cs" />
     <Compile Include="Controllers\Api\Requests\OrderRequestItem.cs" />
     <Compile Include="Controllers\Api\Requests\SearchRequest.cs" />
     <Compile Include="Controllers\Api\Requests\SearchRequestItem.cs" />
     <Compile Include="Controllers\Api\Responses\CustomerSearchResponse.cs" />
     <Compile Include="Controllers\Api\Responses\SearchResponse.cs" />
+    <Compile Include="Controllers\Api\Responses\UserSearchResponse.cs" />
     <Compile Include="Controllers\Api\SearchController .cs" />
+    <Compile Include="Controllers\Api\UserData.cs" />
+    <Compile Include="Controllers\Api\UserSearchController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -146,6 +150,8 @@
     <Compile Include="Infrastructure\ApiHelper.cs" />
     <Compile Include="Infrastructure\BrowserJsonFormatter.cs" />
     <Compile Include="Infrastructure\Extensions.cs" />
+    <Compile Include="Models\HomeViewModel.cs" />
+    <Compile Include="Models\TableWidgetViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +162,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Code\Helpers.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -176,6 +183,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\TableWidgetViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
